@@ -12,7 +12,7 @@ Music created using PySynth: https://mdoege.github.io/PySynth/
 
   Download PySynth https://mdoege.github.io/PySynth/
 
-### In the terminal run gpxstats.gpx and use your gpx file : 
+#### In the terminal run gpxstats.gpx and use your gpx file : 
 (If you use MapMyRun you can export gpx files of your workouts from their website)
 
     python gpxstats.py -i sample.gpx
@@ -21,7 +21,7 @@ Music created using PySynth: https://mdoege.github.io/PySynth/
 
 I have found that iTunes plays the file automatically, however, there are .wav to .mp3 converters online for a more convenient format. 
 
-## Issues:
+### Issues:
   
   *Pysynth is a very simple synthesizer and can only have 1 sound at once, so in order to have more than one sound at once, .wav files must be combined.*
   
