@@ -6,13 +6,13 @@ Extracting elevation change data from a gpx file was adopted from: www.madpickle
 
 Music created using PySynth: https://mdoege.github.io/PySynth/
 
-To Run:
+##To Run:
 
   Download gpxlib.py and gpxstats.py
 
   Download PySynth https://mdoege.github.io/PySynth/
 
-In the terminal run gpxstats.gpx and use your gpx file : 
+###In the terminal run gpxstats.gpx and use your gpx file : 
 (If you use MapMyRun you can export gpx files of your workouts from their website)
 
     python gpxstats.py -i sample.gpx
@@ -21,10 +21,11 @@ In the terminal run gpxstats.gpx and use your gpx file :
 
 I have found that iTunes plays the file automatically, however, there are .wav to .mp3 converters online for a more convenient format. 
 
-Issues:
+##Issues:
   
-  *Pysynth is a very simple synthesizer and can only have 1 sound at once, so in order to have more than one sound at once, .wav files must be combined.
-  *Pysynth only allows notes to be created by referencing the note directly i.e 'C4'. This causes a lot of repetition in code rather than if each note was able to be referenced as a number.
+  *Pysynth is a very simple synthesizer and can only have 1 sound at once, so in order to have more than one sound at once, .wav files must be combined.*
+  
+  *Pysynth only allows notes to be created by referencing the note directly i.e 'C4'. This causes a lot of repetition in code rather than if each note was able to be referenced as a number.*
   
  Please let me know if you find any issues or have questions.
 
