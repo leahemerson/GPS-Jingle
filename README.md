@@ -1,4 +1,4 @@
-# GPS-jingle-
+# GPS-Jingle
 
 Takes in a .gpx file and creates a jingle based on elevation change. The idea is to be able to create a song based on a run, bike, or roadtrip.
 
