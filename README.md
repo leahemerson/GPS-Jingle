@@ -23,7 +23,7 @@ I have found that iTunes plays the file automatically, however, there are .wav t
 
 ### Issues:
   
-  *Pysynth is a very simple synthesizer and can only have 1 sound at once, so in order to have more than one sound at once, .wav files must be combined. This causes multiple .wav files to be created for each song, but FINAL.wav is the sounds combined*
+  *Pysynth is a very simple synthesizer and can only have one sound at once. In order to achieve more than one sound, .wav files must be combined. Therefore multiple .wav files are created for each song, but FINAL.wav is the sounds combined*
   
   
  Please let me know if you find any issues or have questions.
