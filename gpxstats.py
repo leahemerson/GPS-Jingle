@@ -25,6 +25,7 @@ from demosongs import *
 from mkfreq import getfreq
 
 pitchhz, keynum = getfreq()
+#creats references to key notes, based on number 
 def keynote_to_keyname(song):
     o = []
     for a, b in song:
