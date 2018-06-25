@@ -6,8 +6,13 @@ Given one or more GPX files (http://www.topografix.com/GPX/1/1/) this script
 will print out the distance, minimum/maximum elevation and ascent/descent for
 each track. It understands the GPX trk, trkseg, and trkpt types.
 
+-Leah Emerson June 14 2018
 Updated from http://www.madpickles.org/rokjoo/2010/08/11/gpx-elevation-profile-plotting-with-the-google-chart-api/
-for python 3, June 14 2018
+for Python 3.
+
+Added keynote_to_keyname allowing reference to PySynth notes by number rather than name.
+
+Added music creation using PySynth based on elevation and distance changes between points (labeled START MY CODE)
 """
 
 import sys, math, urllib.parse
