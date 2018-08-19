@@ -8,6 +8,7 @@ Extracting elevation change data from a gpx file was adopted from: www.madpickle
 
 Music created using PySynth: https://mdoege.github.io/PySynth/
 
+I've labeled my code in gpxstats.py
 ## To Run:
 
   Download gpxlib.py and gpxstats.py
