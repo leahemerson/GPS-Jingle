@@ -67,7 +67,7 @@ def computeStatistics(points):
 
     #takes elevation number and creates a value 44-88 for upper half of scale. creates length of note (2,4,8,16,32) based on distance
     if (elevationChanges[i] > 0 ):
-      newElevation = (elevationChanges[i] - (elevationChanges[i] %3))/3
+      newElevation = (elevationChanges[i]*5 - ((elevationChanges[i]*5) %3))/3 
       newDistance = ((distances[i]/4) - ((distances[i]/4) %4)) 
       if(newElevation <=44):
         newElevation = newElevation +44
