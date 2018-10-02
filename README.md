@@ -6,21 +6,24 @@ I implemented this idea by expanding on exsisting code:
 
 Extracting elevation change data from a gpx file was adopted from: www.madpickles.org/rokjoo/2010/08/11/gpx-elevation-profile-plotting-with-the-google-chart-api/
 
+I have added a return statment in gpxstats.py, so you will need to use my version rather than the one in the link!
+
 Music created using PySynth: https://mdoege.github.io/PySynth/
 
-I've labeled my code in gpxstats.py
+My code exsists in GpxJingle.py
 ## To Run:
 
   Download gpxlib.py and gpxstats.py
 
   Download PySynth https://mdoege.github.io/PySynth/ 
 
-#### In the terminal run gpxstats.gpx and use your .gpx file : 
+#### In the terminal run GpxJingle.gpx and any gpx files you'd like to create a song from : 
 (If you use MapMyRun you can export gpx files of your workouts from their website)
 
-    python gpxstats.py -i sample.gpx
+    EX: python3 GpxJingle.gpx Run.gpx Bike.gpx Hike.gpx
 
-   This will create a file called "FINAL.wav" in the folder of gpxstats.gpx
+   This will create a file called "FINAL0.wav" in the folder of gpxstats.gpx
+   If you have multiple gpx files the song names will be incremented in the order they are entered (FINAL0, FINAL1, FINAL2...)
 
 I have found that iTunes plays the file automatically, however, there are .wav to .mp3 converters online for a more convenient format. 
 
