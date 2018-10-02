@@ -5,40 +5,16 @@
 Given one or more GPX files (http://www.topografix.com/GPX/1/1/) this script
 will print out the distance, minimum/maximum elevation and ascent/descent for
 each track. It understands the GPX trk, trkseg, and trkpt types.
-
--Leah Emerson June 14 2018
-Updated from http://www.madpickles.org/rokjoo/2010/08/11/gpx-elevation-profile-plotting-with-the-google-chart-api/
-for Python 3.
-
-Added keynote_to_keyname allowing reference to PySynth notes by number rather than name.
-
-Added music creation using PySynth based on elevation and distance changes between points (labeled START MY CODE)
 """
 
 import sys, math, urllib.parse
 from gpxlib import Gpx, Geopoint, Waypoint
-import pysynth_p
-import pysynth_b
-import pysynth_s
-import mixfiles
+
 
 import wave, struct
 import numpy as np
 from math import sin, cos, pi, log, exp, floor, ceil
-from mixfiles import mix_files
-from demosongs import *
-from mkfreq import getfreq
 
-pitchhz, keynum = getfreq()
-#creats references to key notes, based on number 
-def keynote_to_keyname(song):
-    o = []
-    for a, b in song:
-      for x in keynum.keys():
-        if keynum[x] == a - 1:
-          k = x
-      o.append((k, b))
-    return o
 def computeStatistics(points):
   # Given a list, create a generator that yields a tuple of the current
   # element and the next one.
@@ -58,70 +34,6 @@ def computeStatistics(points):
   distances = [0.0]
   distances.extend([point.distance(nextPoint) for point, nextPoint in 
                        pairNext(points)])
-  #START MY CODE
-  tempListHigh=[]
-  tempListLow = []
-
-  #create a  note for each elevation change and length based on distance
-  for i in range(len(elevationChanges)-1):
-
-    #takes elevation number and creates a value 44-88 for upper half of scale. creates length of note (2,4,8,16,32) based on distance
-    if (elevationChanges[i] > 0 ):
-      newElevation = (elevationChanges[i]*5 - ((elevationChanges[i]*5) %3))/3 
-      newDistance = ((distances[i]/4) - ((distances[i]/4) %4)) 
-      if(newElevation <=44):
-        newElevation = newElevation +44
-      else:
-        newElevation = 88
-      
-      if (newDistance>32 or newDistance==24):
-        newDistance = 32
-      if(newDistance == 12 or newDistance==20):
-        newDistance=16
-      if (newDistance ==0):
-        newDistance=2
-
-      note = (newElevation,newDistance)
-      tempListHigh.append(note)
-
-    #takes elevation number when less than 0 and gives value 1-44 for lower half of scale
-    elif (elevationChanges[i] < 0):
-      elevation = abs(elevationChanges[i])
-      newElevation = int((elevation - (elevation %3))/3)
-      newDistance = ((distances[i]/4) - ((distances[i]/4) %4)) 
-    
-      if (newElevation <= 44):
-        newElevation = 44 - newElevation
-      else:
-        newElevation = 0
-      if (newDistance>32 or newDistance==24):
-        newDistance = 32
-      if(newDistance == 12 or newDistance==20):
-        newDistance=16
-      if (newDistance ==0):
-        newDistance=2
-      
-      note = (newElevation,newDistance)
-      tempListLow.append(note)
-
-  #piano-like sound for elevation changes that are greater than 0
-  piano = tuple(tempListHigh)
-  piano = keynote_to_keyname(piano)
-  pysynth_b.make_wav(piano, fn = "piano.wav")
-  
-  #percussion for elevation changes are less than 0
-  low = tuple(tempListLow)
-  low = keynote_to_keyname(low)
-  pysynth_p.make_wav(low, fn="percussion.wav")
-
-  #string for more full sound, based on elevation changes less than 0
-  pysynth_s.make_wav(low, fn="string.wav")
-
-  #mix files created (can only mix two at a time)
-  mixfiles.mix_files("percussion.wav", "piano.wav", "percussionString.wav")
-  mixfiles.mix_files("string.wav", "percussionString.wav", "FINAL.wav")
-  
-  #END MY CODE
 
   return {'distances':distances,
           'elevationChanges':elevationChanges,
@@ -312,13 +224,20 @@ def outputTrackDetails(track, waypoints, units):
   print (" minimum elevation: %.1f%s" % (statistics['minimumElevation'], elevationUnits))
   print (" maximum elevation: %.1f%s" % (statistics['maximumElevation'], elevationUnits))
   #print (generateChartURL(points, waypoints, statistics, units) )
- 
+  #Added 10/1/2018 for GpxToJingle
+  return statistics
 def outputFileDetails(fileName, units):
   gpx = Gpx(fileName, units)
   _ = [outputTrackDetails(track, gpx.waypoints, units) 
        for track in gpx.tracks]
+  for track in gpx.tracks:
+    stats = computeStatistics(track.points)
+
+  return stats
 
 def main(argv=None):
+  #added result list for GPXToJingle 10/2/2018
+  result = []
   if argv == None:
     argv = sys.argv
   if len(argv) < 2:
@@ -330,7 +249,9 @@ def main(argv=None):
     units = 'imperial'
     firstFileIndex = 2
   for i in range(firstFileIndex,len(argv)):
-    outputFileDetails(argv[i], units)
+    result.append(outputFileDetails(argv[i], units))
+  return result
+
 
 if __name__ == '__main__':
   sys.exit(main())
