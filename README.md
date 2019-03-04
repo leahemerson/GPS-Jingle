@@ -1,6 +1,6 @@
 # GPS-Jingle
 
-Takes in a .gpx file and creates a jingle based on elevation change. The idea is to be able to create a song based on your run, bike. Warning: the songs are not usually great-sounding, but thats the joy of something unique to each excursion. 
+Takes in a .gpx file and creates a jingle based on elevation change. The idea is to be able to create a song based on your run, bike. Warning: the songs are generally not easy on the ears, but the idea is that it is unique to each excursion. 
 
 I implemented this idea by expanding on exsisting code:
 
@@ -34,8 +34,6 @@ I have found that iTunes plays the file automatically, however, there are .wav t
   
  Please let me know if you find any issues or have questions.
 
-
-Enjoy your custom songs! 
 
 
 
