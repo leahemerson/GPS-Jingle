@@ -25,7 +25,6 @@ My code exsists in GpxJingle.py
    This will create a file called "FINAL0.wav" in the folder of gpxstats.gpx
    If you have multiple gpx files the song names will be incremented in the order they are entered (FINAL0, FINAL1, FINAL2...)
 
-I have found that iTunes plays the file automatically, however, there are .wav to .mp3 converters online for a more convenient format. 
 
 ### Issues:
   
